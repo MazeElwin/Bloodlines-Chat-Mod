@@ -1,0 +1,15 @@
+{
+  "providers": [
+    {
+      "type": "ttf",
+      "file": "bloodline-chat:lexend.ttf",
+      "shift": [0, 0],
+      "size": 10,
+      "oversample": 2
+    },
+    {
+      "type": "reference",
+      "id": "minecraft:default"
+    }
+  ]
+}

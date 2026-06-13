@@ -1,0 +1,25 @@
+# Gradle
+.gradle/
+build/
+out/
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+*.war
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Minecraft
+run/
+crash-reports/
