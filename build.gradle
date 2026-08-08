@@ -1,0 +1,78 @@
+plugins {
+	id 'fabric-loom' version '1.17.+'
+	id 'java'
+	id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+tasks.withType(AbstractArchiveTask).configureEach {
+	archiveFileName = providers.provider {
+		def classifier = archiveClassifier.getOrNull()
+		def suffix = classifier ? "-${classifier}" : ""
+		"${project.archives_base_name}${project.version}${suffix}.${archiveExtension.get()}"
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url = 'https://api.modrinth.com/maven' }
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings loom.layered {
+		mappings file("mappings/26.1.2.tiny"), {
+			fallbackNamespaces "official", "named"
+		}
+	}
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+processResources {
+	inputs.property "version", project.version
+	inputs.property "group", project.group
+	inputs.property "loader_version", project.loader_version
+	inputs.property "minecraft_version", project.minecraft_version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version,
+				"group": project.group,
+				"loader_version": project.loader_version,
+				"minecraft_version": project.minecraft_version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
+
+jar {
+	from("LICENSE") {
+		rename { "${it}_${project.archives_base_name}"}
+	}
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+		}
+	}
+
+	repositories {
+		// Add repository here if needed
+	}
+}

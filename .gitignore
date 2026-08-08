@@ -1,0 +1,60 @@
+# Gradle
+.gradle/
+build/
+out/
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+*.war
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+*.swp
+*.swo
+*~
+
+# AI assistant / local workflow files
+.agents/
+.codex/
+.cursor/
+.continue/
+.windsurf/
+.aider*
+.claude/
+.cline/
+.roo/
+.augment/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+copilot-instructions.md
+.github/copilot-instructions.md
+.github/instructions/
+.github/prompts/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets / local config
+.env
+.env.*
+local.properties
+secrets.properties
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
+*.local
+*.secret
+
+# Logs / runtime
+logs/
+*.log
+crash-reports/
+run/
+runs/

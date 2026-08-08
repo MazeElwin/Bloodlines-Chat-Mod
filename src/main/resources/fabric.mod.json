@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "bloodline-chat",
+  "version": "${version}",
+  "name": "Bloodline Chat",
+  "description": "Organize Bloodlines server chat into tabs for local chat, global chat, team chat, whispers, and server messages",
+  "authors": [
+    "Maze"
+  ],
+  "contact": {
+    "homepage": "https://github.com/MazeElwin/Bloodlines-Chat-Mod",
+    "sources": "https://github.com/MazeElwin/Bloodlines-Chat-Mod"
+  },
+  "license": "MIT",
+  "icon": "assets/bloodline-chat/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "com.example.chatplus.ChatPlusMod"
+    ],
+    "client": [
+      "com.example.chatplus.ChatPlusClient"
+    ]
+  },
+  "mixins": [
+    "chatplus.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}",
+    "java": ">=25"
+  }
+}
